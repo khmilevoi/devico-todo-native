@@ -1,35 +1,53 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {Text, View} from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {readLocalStorage} from './src/store/actions/localStorage';
+import {deleteActive} from './src/store/actions/list';
+import {connect} from 'react-redux';
 
-const App: () => React$Node = () => {
+const App = ({online, openShare, readLocalStorage, deleteActive, active}) => {
+  useEffect(() => {
+    readLocalStorage();
+
+    // window.addEventListener('keydown', event => {
+    // if (event.keyCode === 27) {
+    // deleteActive();
+    // }
+    // });
+  }, [deleteActive, readLocalStorage]);
   return (
-    <>
-      <Text>Hello</Text>
-    </>
+    <View>
+      <Text>{online.toString()}</Text>
+    </View>
   );
 };
 
-export default App;
+App.propTypes = {
+  online: PropTypes.bool.isRequired,
+  openShare: PropTypes.bool.isRequired,
+  readLocalStorage: PropTypes.func.isRequired,
+  deleteActive: PropTypes.func.isRequired,
+  active: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    isPublic: PropTypes.bool.isRequired,
+  }),
+};
+
+const mapStateToProps = state => ({
+  online: !!state.auth.user,
+  openShare: !!state.share.list,
+  active: state.lists.active,
+});
+
+deleteActive;
+const mapDispatchToProps = {
+  readLocalStorage,
+  deleteActive,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
