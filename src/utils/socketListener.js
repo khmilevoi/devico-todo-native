@@ -136,7 +136,7 @@ export const socketListener = {
         const {todos} = getState();
         const {list} = todos;
 
-        const currentList = list[listId];
+        const currentList = [...list[listId]];
 
         if (currentList) {
           const currentItemIndex = currentList.findIndex(

@@ -28,7 +28,7 @@ export const listsReducer = (state = initialState.lists, {type, payload}) => {
         active.isPublic = !active.isPublic;
       }
 
-      return {...state, personal};
+      return {...state, personal, active};
     }
 
     case lists.PERSONAL.DELETE: {

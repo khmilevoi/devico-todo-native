@@ -1,9 +1,5 @@
 import {methods} from '../constants/methods';
-
-const config = {
-  host: '192.168.1.129',
-  PORT: 3000,
-};
+import {config} from '../constants/config';
 
 const createURL = query => `http://${config.host}:${config.PORT}${query}`;
 

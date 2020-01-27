@@ -1,22 +1,24 @@
 import React from 'react';
 
 import {AppRegistry} from 'react-native';
-import App from './App';
+import App from './src/App';
 import {name as appName} from './app.json';
 
 import {Provider} from 'react-redux';
-import {NativeRouter} from 'react-router-native';
+import {NativeRouter as Router} from 'react-router-native';
 import {configureStore} from './src/store/configureStore';
 
 const store = configureStore();
 
+console.disableYellowBox = true;
+
 const Index = () => {
   return (
-    <NativeRouter>
+    <Router>
       <Provider store={store}>
         <App />
       </Provider>
-    </NativeRouter>
+    </Router>
   );
 };
 

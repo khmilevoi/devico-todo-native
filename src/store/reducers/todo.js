@@ -24,7 +24,10 @@ export const todosReducer = (state = initialState.todos, {type, payload}) => {
       const list = {...state.list};
 
       if (list[payload.list]) {
-        list[payload.list].push(payload.res);
+        const todos = [...list[payload.list]];
+        todos.push(payload.res);
+
+        list[payload.list] = todos;
       }
 
       return {...state, list};
