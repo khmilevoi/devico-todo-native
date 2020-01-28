@@ -8,25 +8,26 @@ import {Provider} from 'react-redux';
 import {NativeRouter as Router} from 'react-router-native';
 import {configureStore} from './src/store/configureStore';
 
-import firebase from 'react-native-firebase';
+import pushNotification from 'react-native-push-notification';
 
 const store = configureStore();
 
 console.disableYellowBox = true;
 
-firebase
-  .messaging()
-  .getToken()
-  .then(token => console.log(token));
+pushNotification.configure({
+  onRegister: token => {
+    console.log('TOKEN:', token);
+  },
 
-firebase.messaging().onMessage(message => {
-  console.log('MESSAGE!!!!!!!!!!!!!!!!!!!!!!!!');
-  console.log(message);
-});
+  onNotification: notification => {
+    console.log('NOTIFICATION:', notification);
+  },
 
-firebase.notifications().onNotification(notification => {
-  console.log('NOTIFICATION!!!!!!!!!!!!!!!!!!!!!!!!');
-  console.log(notification);
+  senderID: '377767786455',
+
+  popInitialNotification: true,
+
+  requestPermissions: false,
 });
 
 const Index = () => {

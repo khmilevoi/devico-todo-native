@@ -2,12 +2,15 @@ package com.first;
 
 import android.app.Application;
 import android.content.Context;
+
+import com.first.BuildConfig;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+//import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 
-import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
-import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+//import io.invertase.firebase.RNFirebasePackage;
+//import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+//import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 
 //import com.reactnativecommunity.checkbox.ReactCheckBoxPackage;
 //import com.horcrux.svg.SvgPackage;
@@ -34,9 +37,10 @@ public class MainApplication extends Application implements ReactApplication {
       // example:
       // packages.add(new MyReactNativePackage());
       // packages.add(new SvgPackage());
-//       packages.add(new RNFirebasePackage());
-       packages.add(new RNFirebaseMessagingPackage());
-       packages.add(new RNFirebaseNotificationsPackage());
+      // packages.add(new RNFirebasePackage());
+      // packages.add(new RNFirebaseMessagingPackage());
+      // packages.add(new RNFirebaseNotificationsPackage());
+//      packages.add(new ReactNativePushNotificationPackage());
       return packages;
     }
 
