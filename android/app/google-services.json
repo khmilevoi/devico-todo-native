@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "377767786455",
+    "firebase_url": "https://devico-todo.firebaseio.com",
+    "project_id": "devico-todo",
+    "storage_bucket": "devico-todo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377767786455:android:76a5a5eb0d73440360bd92",
+        "android_client_info": {
+          "package_name": "com.first"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "377767786455-0dmu8p13om9ct1v5h2atrodufv8a2agt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnEbV-gCSmvg6KVKW5NRh7GBNLz8yM-fY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "377767786455-0dmu8p13om9ct1v5h2atrodufv8a2agt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

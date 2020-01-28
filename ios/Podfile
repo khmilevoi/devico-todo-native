@@ -40,6 +40,8 @@ target 'first' do
 
   pod 'react-native-checkbox', :path => '../node_modules/@react-native-community/checkbox'
 
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
+
   target 'firstTests' do
     inherit! :search_paths
     # Pods for testing
