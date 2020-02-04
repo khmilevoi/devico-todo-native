@@ -31,7 +31,7 @@ const Lists = ({
     if (user) {
       getLists(user.token);
     }
-  }, [getLists, user]);
+  }, [getLists, user && user.token]);
 
   if (!user) {
     return null;
@@ -95,22 +95,22 @@ Lists.propTypes = {
   toggle: PropTypes.func.isRequired,
   personal: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     }),
   ).isRequired,
   shared: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     }),
   ).isRequired,
   setActive: PropTypes.func.isRequired,
   setList: PropTypes.func.isRequired,
   active: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }),
   user: PropTypes.shape({
     token: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }),
 };
 

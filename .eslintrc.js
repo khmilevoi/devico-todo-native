@@ -3,7 +3,8 @@ module.exports = {
   extends: '@react-native-community',
   rules: {
     'no-shadow': 0,
-    'prettier/prettier': 0
+    'prettier/prettier': 0,
+    'react-hooks/exhaustive-deps': 0
   },
 };
 

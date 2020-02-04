@@ -13,7 +13,7 @@ const List = ({item, handleClick}) => {
 
 List.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
   handleClick: PropTypes.func.isRequired,

@@ -1,13 +1,15 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
+import {Linking} from 'react-native';
+
 import {connect} from 'react-redux';
-import {Redirect, Route} from 'react-router-native';
+import {Redirect, Route, useHistory} from 'react-router-native';
 
 import * as s from './styles/app';
 
 import {readLocalStorage} from './store/actions/localStorage';
-import {deleteActive} from './store/actions/list';
+import {deleteActive, setActive} from './store/actions/list';
 
 import Auth from './pages/Auth';
 import Main from './pages/Main';
@@ -17,11 +19,27 @@ const App = ({
   openShare,
   readLocalStorage,
   deleteActive,
+  setActive,
   active,
+  lists,
 }) => {
+  const history = useHistory();
+
   useEffect(() => {
-    readLocalStorage();
-  }, [deleteActive, readLocalStorage]);
+    if (!authorized) {
+      readLocalStorage();
+    }
+
+    Linking.getInitialURL().then(url => {
+      if (authorized) {
+        const route = url.replace(/^(\w+:\/)/, '');
+        const list = +route.replace(/^(\/\w+\/)/, '');
+
+        history.push(route);
+        setActive(lists.find(item => item.id === list));
+      }
+    });
+  }, [authorized, lists.length]);
 
   return (
     <s.App>
@@ -48,11 +66,13 @@ const mapStateToProps = state => ({
   authorized: !!state.auth.user,
   openShare: !!state.share.list,
   active: state.lists.active,
+  lists: [...state.lists.personal, ...state.lists.shared],
 });
 
 const mapDispatchToProps = {
   readLocalStorage,
   deleteActive,
+  setActive,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

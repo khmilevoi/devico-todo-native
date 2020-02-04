@@ -84,16 +84,16 @@ export const Todos = ({
 Todos.propTypes = {
   list: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     }),
   ),
   active: PropTypes.shape({
-    id: PropTypes.string,
-    creator: PropTypes.string,
+    id: PropTypes.number,
+    creator: PropTypes.number,
     isPublic: PropTypes.bool,
   }).isRequired,
   user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     token: PropTypes.string.isRequired,
   }),
   getTodos: PropTypes.func.isRequired,

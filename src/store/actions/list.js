@@ -63,13 +63,13 @@ export const getLists = token => async dispatch => {
     const {personal, shared} = await getListsQuery(token);
 
     const personalList = personal.map(
-      ({name, creator, public: isPublic, _id, head, tail}) =>
-        new List(_id, name, creator, isPublic, head, tail),
+      ({name, creator, public: isPublic, id, head, tail}) =>
+        new List(id, name, creator, isPublic, head, tail),
     );
 
     const sharedList = shared.map(
-      ({name, creator, public: isPublic, _id, head, tail}) =>
-        new List(_id, name, creator, isPublic, head, tail),
+      ({name, creator, public: isPublic, id, head, tail}) =>
+        new List(id, name, creator, isPublic, head, tail),
     );
 
     dispatch(setPersonal(personalList));

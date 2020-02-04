@@ -3,7 +3,7 @@ export class List {
     this.id = id;
     this.name = name;
     this.creator = creator;
-    this.isPublic = isPublic;
+    this.isPublic = !!isPublic;
     this.head = head;
     this.tail = tail;
   }
